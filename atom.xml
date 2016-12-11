@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>肖晓的博客</title>
+  <subtitle>路在脚下，去向远方</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="/"/>
+  <updated>2016-12-11T03:32:05.660Z</updated>
+  <id>/</id>
+  
+  <author>
+    <name>肖晓</name>
+    <email>395687316@qq.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开篇</title>
+    <link href="/2016/12/11/first/"/>
+    <id>/2016/12/11/first/</id>
+    <published>2016-12-11T03:31:03.000Z</published>
+    <updated>2016-12-11T03:32:05.660Z</updated>
+    
+    <content type="html"><![CDATA[<p> 这是我的第一篇文章试试</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 这是我的第一篇文章试试&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
