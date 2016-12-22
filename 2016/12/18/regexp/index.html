@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="">
-  <title>git命令整理(一) | 肖晓的博客</title>
+  <title>学会使用正则表达式 | 肖晓的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git是一个分布式的版本控制系统，其工作流程可用下图表示">
+  <meta name="description" content="正则表达式介绍  正则表达式主要可用来搜索文本，替换文本，提取子字符串等。本文总结一下正则表达式的基本写法。正则表达式由普通字符和元字符组成，普通字符代表的是自己，元字符是一些预定义的特殊含义的字符。画个图来表示一下看起来更直观,请指正。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git命令整理(一)">
-<meta property="og:url" content="/2016/12/12/git1/index.html">
+<meta property="og:title" content="学会使用正则表达式">
+<meta property="og:url" content="/2016/12/18/regexp/index.html">
 <meta property="og:site_name" content="肖晓的博客">
-<meta property="og:description" content="git是一个分布式的版本控制系统，其工作流程可用下图表示">
-<meta property="og:image" content="/\assets\blogImg\git.png">
-<meta property="og:updated_time" content="2016-12-14T16:12:10.803Z">
+<meta property="og:description" content="正则表达式介绍  正则表达式主要可用来搜索文本，替换文本，提取子字符串等。本文总结一下正则表达式的基本写法。正则表达式由普通字符和元字符组成，普通字符代表的是自己，元字符是一些预定义的特殊含义的字符。画个图来表示一下看起来更直观,请指正。">
+<meta property="og:image" content="/\assets\blogImg\zhengzeNT.png">
+<meta property="og:image" content="/\assets\blogImg\tanlan.png">
+<meta property="og:image" content="/\assets\blogImg\lkdy.png">
+<meta property="og:updated_time" content="2016-12-22T15:00:26.832Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git命令整理(一)">
-<meta name="twitter:description" content="git是一个分布式的版本控制系统，其工作流程可用下图表示">
-<meta name="twitter:image" content="/\assets\blogImg\git.png">
+<meta name="twitter:title" content="学会使用正则表达式">
+<meta name="twitter:description" content="正则表达式介绍  正则表达式主要可用来搜索文本，替换文本，提取子字符串等。本文总结一下正则表达式的基本写法。正则表达式由普通字符和元字符组成，普通字符代表的是自己，元字符是一些预定义的特殊含义的字符。画个图来表示一下看起来更直观,请指正。">
+<meta name="twitter:image" content="/\assets\blogImg\zhengzeNT.png">
   
     <link rel="alternative" href="/atom.xml" title="肖晓的博客" type="application/atom+xml">
   
@@ -132,284 +134,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-regexp" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      git命令整理(一)
+      学会使用正则表达式
     </h1>
   
 
-        <a href="/2016/12/12/git1/" class="archive-article-date">
-  	<time datetime="2016-12-12T15:45:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-12</time>
+        <a href="/2016/12/18/regexp/" class="archive-article-date">
+  	<time datetime="2016-12-18T12:35:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-18</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>git是一个分布式的版本控制系统，其工作流程可用下图表示<br><img src="\assets\blogImg\git.png" alt=""><br><a id="more"></a><br><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">图片来源</a></p>
-<p>名称解释</p>
-<ul>
-<li>Workspace：工作区</li>
-<li>Index / Stage：暂存区</li>
-<li>Repository：仓库区（或本地仓库）</li>
-<li>Remote：远程仓库</li>
-</ul>
-<p>一般会把需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改到本地仓库。</p>
-<h1 id="一、新建代码库"><a href="#一、新建代码库" class="headerlink" title="一、新建代码库"></a>一、新建代码库</h1><pre><code># 在当前目录初始化一个git仓库
-$ git init
-# 新建一个目录，将其初始化为Git代码库
-$ git init [project-name]
-# 下载一个项目和它的整个代码历史
-$ git clone [url]
-</code></pre><h1 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h1><p>   Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
-<pre><code># 显示当前的Git配置
-$ git config --list
-
-# 编辑Git配置文件
-$ git config -e [--global]
-
-# 设置提交代码时的用户信息
-$ git config [--global] user.name &quot;[name]&quot;
-$ git config [--global] user.email &quot;[email address]&quot;
-</code></pre><h1 id="三、增加-删除文件"><a href="#三、增加-删除文件" class="headerlink" title="三、增加/删除文件"></a>三、增加/删除文件</h1><pre><code># 添加指定文件到暂存区
-$ git add [file1] [file2] ...
-
-# 添加指定目录到暂存区，包括子目录
-$ git add [dir]
-
-# 添加当前目录的所有文件到暂存区
-$ git add .
-
-# 添加每个变化前，都会要求确认
-# 对于同一个文件的多处变化，可以实现分次提交
-$ git add -p
-
-# 删除工作区文件，并且将这次删除放入暂存区
-$ git rm [file1] [file2] ...
-
-# 停止追踪指定文件，但该文件会保留在工作区
-$ git rm --cached [file]
-
-# 改名文件，并且将这个改名放入暂存区
-$ git mv [file-original] [file-renamed]
-</code></pre><h1 id="四、代码提交"><a href="#四、代码提交" class="headerlink" title="四、代码提交"></a>四、代码提交</h1><pre><code># 提交暂存区到仓库区
-$ git commit -m [message]
-
-# 提交暂存区的指定文件到仓库区
-$ git commit [file1] [file2] ... -m [message]
-
-# 提交工作区自上次commit之后的变化，直接到仓库区
-$ git commit -a
-
-# 提交时显示所有diff信息
-$ git commit -v
-
-# 使用一次新的commit，替代上一次提交
-# 如果代码没有任何新变化，则用来改写上一次commit的提交信息
-$ git commit --amend -m [message]
-
-# 重做上一次commit，并包括指定文件的新变化
-$ git commit --amend [file1] [file2] ...
-</code></pre><h1 id="五、分支"><a href="#五、分支" class="headerlink" title="五、分支"></a>五、分支</h1><pre><code># 列出所有本地分支
-$ git branch
-
-# 列出所有远程分支
-$ git branch -r
-
-# 列出所有本地分支和远程分支
-$ git branch -a
-
-# 新建一个分支，但依然停留在当前分支
-$ git branch [branch-name]
-
-# 新建一个分支，并切换到该分支
-$ git checkout -b [branch]
-
-# 新建一个分支，指向指定commit
-$ git branch [branch] [commit]
-
-# 新建一个分支，与指定的远程分支建立追踪关系
-$ git branch --track [branch] [remote-branch]
-
-# 切换到指定分支，并更新工作区
-$ git checkout [branch-name]
-
-# 切换到上一个分支
-$ git checkout -
-
-# 建立追踪关系，在现有分支与指定的远程分支之间
-$ git branch --set-upstream [branch] [remote-branch]
-
-# 合并指定分支到当前分支
-$ git merge [branch]
-
-# 选择一个commit，合并进当前分支
-$ git cherry-pick [commit]
-
-# 删除分支
-$ git branch -d [branch-name]
-
-# 删除远程分支
-$ git push origin --delete [branch-name]
-$ git branch -dr [remote/branch]
-</code></pre><p>#六、标签</p>
-<pre><code># 列出所有tag
-$ git tag
-
-# 新建一个tag在当前commit
-$ git tag [tag]
-
-# 新建一个tag在指定commit
-$ git tag [tag] [commit]
-
-# 删除本地tag
-$ git tag -d [tag]
-
-# 删除远程tag
-$ git push origin :refs/tags/[tagName]
-
-# 查看tag信息
-$ git show [tag]
-
-# 提交指定tag
-$ git push [remote] [tag]
-
-# 提交所有tag
-$ git push [remote] --tags
-
-# 新建一个分支，指向某个tag
-$ git checkout -b [branch] [tag]
-</code></pre><p>#七、查看信息</p>
-<pre><code># 显示有变更的文件
-$ git status
-
-# 显示当前分支的版本历史
-$ git log
-
-# 显示commit历史，以及每次commit发生变更的文件
-$ git log --stat
-
-# 搜索提交历史，根据关键词
-$ git log -S [keyword]
-
-# 显示某个commit之后的所有变动，每个commit占据一行
-$ git log [tag] HEAD --pretty=format:%s
-
-# 显示某个commit之后的所有变动，其&quot;提交说明&quot;必须符合搜索条件
-$ git log [tag] HEAD --grep feature
-
-# 显示某个文件的版本历史，包括文件改名
-$ git log --follow [file]
-$ git whatchanged [file]
-
-# 显示指定文件相关的每一次diff
-$ git log -p [file]
-
-# 显示过去5次提交
-$ git log -5 --pretty --oneline
-
-# 显示所有提交过的用户，按提交次数排序
-$ git shortlog -sn
-
-# 显示指定文件是什么人在什么时间修改过
-$ git blame [file]
-
-# 显示暂存区和工作区的差异
-$ git diff
-
-# 显示暂存区和上一个commit的差异
-$ git diff --cached [file]
-
-# 显示工作区与当前分支最新commit之间的差异
-$ git diff HEAD
-
-# 显示两次提交之间的差异
-$ git diff [first-branch]...[second-branch]
-
-# 显示今天你写了多少行代码
-$ git diff --shortstat &quot;@{0 day ago}&quot;
-
-# 显示某次提交的元数据和内容变化
-$ git show [commit]
-
-# 显示某次提交发生变化的文件
-$ git show --name-only [commit]
-
-# 显示某次提交时，某个文件的内容
-$ git show [commit]:[filename]
-
-# 显示当前分支的最近几次提交
-$ git reflog
-</code></pre><p>#八、远程同步</p>
-<pre><code># 下载远程仓库的所有变动
-$ git fetch [remote]
-
-# 显示所有远程仓库
-$ git remote -v
-
-# 显示某个远程仓库的信息
-$ git remote show [remote]
-
-# 增加一个新的远程仓库，并命名
-$ git remote add [shortname] [url]
-
-# 取回远程仓库的变化，并与本地分支合并
-$ git pull [remote] [branch]
-
-# 上传本地指定分支到远程仓库
-$ git push [remote] [branch]
-
-# 强行推送当前分支到远程仓库，即使有冲突
-$ git push [remote] --force
-
-# 推送所有分支到远程仓库
-$ git push [remote] --all
-</code></pre><p>#九、撤销</p>
-<pre><code># 恢复暂存区的指定文件到工作区
-$ git checkout [file]
-
-# 恢复某个commit的指定文件到暂存区和工作区
-$ git checkout [commit] [file]
-
-# 恢复暂存区的所有文件到工作区
-$ git checkout .
-
-# 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变
-$ git reset [file]
-
-# 重置暂存区与工作区，与上一次commit保持一致
-$ git reset --hard
-
-# 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
-$ git reset [commit]
-
-# 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
-$ git reset --hard [commit]
-
-# 重置当前HEAD为指定commit，但保持暂存区和工作区不变
-$ git reset --keep [commit]
-
-# 新建一个commit，用来撤销指定commit
-# 后者的所有变化都将被前者抵消，并且应用到当前分支
-$ git revert [commit]
-
-# 暂时将未提交的变化移除，稍后再移入
-$ git stash
-$ git stash pop
-</code></pre><p>#十、其他</p>
-<pre><code># 生成一个可供发布的压缩包
-$ git archive
-</code></pre><p>多人协作的工作模式通常是这样：</p>
-<p>首先，可以试图用git push origin branch-name推送自己的修改；</p>
-<p>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；</p>
-<p>如果合并有冲突，则解决冲突，并在本地提交；</p>
-<p>没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！</p>
-<p>如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch –set-upstream branch-name origin/branch-name。</p>
-<p><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">原文链接</a></p>
+        <h1 id="正则表达式介绍"><a href="#正则表达式介绍" class="headerlink" title="正则表达式介绍"></a>正则表达式介绍</h1><p>  正则表达式主要可用来搜索文本，替换文本，提取子字符串等。本文总结一下正则表达式的基本写法。<br>正则表达式由普通字符和元字符组成，普通字符代表的是自己，元字符是一些预定义的特殊含义的字符。<br>画个图来表示一下看起来更直观,请指正。  </p>
+<p><img src="\assets\blogImg\zhengzeNT.png" alt=""><br><a id="more"></a><br>   一个正则表达式可能就是普通字符也可能就是元字符，还有就是普通字符和元字符的组合,这些式子代表着符合某一种模式的字符串。<br>普通字符大家都能理解，那理解正则表达式代表的字符串其实只要理解元字符的含义就行了。</p>
+<h1 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h1><pre><code>普通字符包括字母数字下划线
+</code></pre><p>   alert(“abc”.match(/a/));//a</p>
+<p>   alert(“my apple”.match(/apple/));//apple</p>
+<h1 id="集合-元字符"><a href="#集合-元字符" class="headerlink" title="集合:元字符[]"></a>集合:元字符[]</h1><p>   /[abc]/ ,匹配abc中的任意一个字符<br>   alert(“apple”.match(/[abc]/));//a<br>   alert(“bit”.match(/[abc]/));//b   </p>
+<p>   元字符^ ， 这个符合用在[]里面表示取反,用在外面则是表示界限<br>   /[^abc]/ ，匹配除abc中任意一个以外的一个字符<br>   alert(/[^abc]/.test(“a”));//false<br>   alert(/[^abc]/.test(“d”));//true</p>
+<p>   元字符- , 这个符号用在[]里面表示范围<br>   /[a-z]/ , 匹配小写的字母<br>   alert(/[a-z]/.test(“s”));//true</p>
+<p>   ^和-也可以组合使用<br>   /[^a-s1-6]/  ，匹配a-s,1-6以外的其他一个字符<br>   alert(/[^a-s1-6]/.test(“9”));//true<br>   alert(/[^a-s1-6]/.test(“5”));false</p>
+<h1 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h1><p>   +? ,匹配?前的子表达式出现0次或1次。例如,/xy?/将匹配”x”或”xy”<br>   +<em> ,匹配前面的子表达式任意次。例如，/zo</em>/能匹配“z”，也能匹配“zo”以及“zoo”<br>   ++ ,匹配前面的子表达式一次或多次(大于等于1次）。例如，“zo+”能匹配“zo”以及“zoo”，但不能匹配“z”。+等价于{1,}<br>   +{n} ,n是一个非负整数。匹配确定的n次。例如，“o{2}”不能匹配“Bob”中的“o”，但是能匹配“food”中的两个o<br>   +{n,} ,n是一个非负整数。至少匹配n次。例如，“o{2,}”不能匹配“Bob”中的“o”，但能匹配“foooood”中的所有o。“o{1,}”等价于“o+”。“o{0,}”则等价于“o*”<br>   +{n,m} ,m和n均为非负整数，其中n&lt;=m。最少匹配n次且最多匹配m次。例如，“o{1,3}”将匹配“fooooood”中的前三个o。“o{0,1}”等价于“o?”。请注意在逗号和两个数之间不能有空格</p>
+<p>但是需要注意的是<em>,+,{n,} 都是贪婪型元字符，它们在进行匹配时的行为模式是多多益善而不是适可而止的。<br>例: 文本内容：<br>    <b>AK</b> and <b>HI</b><br>    正则表达式<br>    /&lt;[Bb]&gt;.</em>&lt;\/[Bb]&gt;/<br>    alert(“<b>AK</b> and <b>HI</b>“.match(/&lt;[Bb]&gt;.<em>&lt;\/[Bb]&gt;/));<br>    结果:<b>AK</b> and <b>HI</b><br>   如果这里只想要标签内的内容而去掉and ， 就需要在</em>后面加?，使得这个*变成懒惰型</p>
+<p>   <img src="\assets\blogImg\tanlan.png" alt=""> </p>
+<p>#边界</p>
+<p>  ##单词边界<br>  单词边界主要用来判定一个单词的范围<br>  +/b 匹配一个单词边界，也就是指单词和空格间的位置（即正则表达式的“匹配”有两种概念，一种是匹配字符，一种是匹配位置，这里的\b就是匹配位置的）。例如，“er\b”可以匹配“never”中的“er”，但不能匹配“verb”中的“er”。<br>  +\B 匹配非单词边界。“er\B”能匹配“verb”中的“er”，但不能匹配“never”中的“er”。</p>
+<p>  ##字符串边界<br>  字符串边界则用来判定一个单词在整个文本中的位置<br>  +^ 匹配输入字符串的开始位置。<br>  +$ 匹配输入字符串的结束位置。<br>    alert(/^apple/.test(“my apple”));//false<br>    alert(/^apple/.test(“apple is good”));//true</p>
+<pre><code>alert(/apple$/.test(&quot;my apple&quot;));//true
+alert(/apple$/.test(&quot;apple is good&quot;));//false
+</code></pre><p>#子表达式<br>  子表达式就是正则表达式会把小括号内的内容作为一个整体，如(hit){2} 是指”hit”连续出现2次</p>
+<p>#回溯引用<br>   ()中的内容会被正则表达式中的匹配组捕获成为自表达式，在之后可通过”\编号”表示法进行引用<br>        //true<br>    (dog)被捕获成为自表达式，紧接着使用\1调用此表达式</p>
+<p>#非捕获性分组<br>   在()左括号后面紧跟?:即(?:)此时不会创建自表达式<br>    alert(/(?:dog)\1/.test(“dogdog”));//false<br>    alert(/(?:dog)\1/.test(“dog\1”));//true</p>
+<p>#前瞻后瞻<br>  前瞻指定了一个必须匹配，但不在结果中返回的模式。向前查找实际上就是一个子表达式，从语法上看，一个向前查找模式其实就是一个以?=开头的子表达式，需要匹配的文本跟在=后面。<br>  例：文本<br>    <a href="http://www.forta.com/" target="_blank" rel="external">http://www.forta.com/</a><br>    <a href="https://mail.forta.com/" target="_blank" rel="external">https://mail.forta.com/</a><br>    ftp://ftp.forta.com/<br>  正则表达式<br>    /.+(?=:)/<br>   结果将匹配http   https   ftp，即”:”前的内容</p>
+<p>   <img src="\assets\blogImg\lkdy.png" alt=""></p>
+<p>##<a href="http://c.biancheng.net/cpp/html/1427.html" target="_blank" rel="external">更多的元字符</a></p>
+<p>##<a href="http://www.jianshu.com/p/27c8b26faa9b" target="_blank" rel="external">简单易懂的正则表达式文章1</a></p>
+<p>##<a href="http://www.cnblogs.com/rubylouvre/archive/2010/03/09/1681222.html#top" target="_blank" rel="external">简单易懂的正则表达式文章2</a></p>
 
       
 
@@ -420,7 +187,7 @@ $ git archive
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
 	</div>
 
       
@@ -473,7 +240,7 @@ $ git archive
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http:/2016/12/12/git1/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:/2016/12/18/regexp/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -487,18 +254,9 @@ $ git archive
   
 <nav id="article-nav">
   
-    <a href="/2016/12/18/regexp/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          学会使用正则表达式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/11/first/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">开篇</div>
+    <a href="/2016/12/12/git1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git命令整理(一)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -511,7 +269,7 @@ $ git archive
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="git1" data-title="git命令整理(一)" data-url="/2016/12/12/git1/"></div>
+	<div class="ds-thread" data-thread-key="regexp" data-title="学会使用正则表达式" data-url="/2016/12/18/regexp/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
