@@ -30,13 +30,6 @@
   </url>
   
   <url>
-    <loc>/assets/demo/hack_demo.html</loc>
-    
-    <lastmod>2016-12-04T16:51:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>/assets/demo/jiugongge_demo.html</loc>
     
     <lastmod>2016-12-04T16:51:20.000Z</lastmod>
@@ -45,6 +38,13 @@
   
   <url>
     <loc>/assets/demo/jiugongge_demo2.html</loc>
+    
+    <lastmod>2016-12-04T16:51:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>/assets/demo/hack_demo.html</loc>
     
     <lastmod>2016-12-04T16:51:20.000Z</lastmod>
     
@@ -65,14 +65,14 @@
   </url>
   
   <url>
-    <loc>/assets/demo/coffee_pc_demo/pro-con.js</loc>
+    <loc>/assets/demo/gift/index.html</loc>
     
     <lastmod>2016-12-04T16:51:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/assets/demo/gift/index.html</loc>
+    <loc>/assets/demo/mediator/demo.html</loc>
     
     <lastmod>2016-12-04T16:51:20.000Z</lastmod>
     
@@ -86,7 +86,7 @@
   </url>
   
   <url>
-    <loc>/assets/demo/mediator/demo.html</loc>
+    <loc>/assets/demo/coffee_pc_demo/pro-con.js</loc>
     
     <lastmod>2016-12-04T16:51:20.000Z</lastmod>
     
@@ -121,14 +121,14 @@
   </url>
   
   <url>
-    <loc>/assets/demo/gift/js/shake.js</loc>
+    <loc>/assets/demo/gift/css/reset.css</loc>
     
     <lastmod>2016-12-04T16:51:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>/assets/demo/gift/css/reset.css</loc>
+    <loc>/assets/demo/gift/js/shake.js</loc>
     
     <lastmod>2016-12-04T16:51:20.000Z</lastmod>
     
