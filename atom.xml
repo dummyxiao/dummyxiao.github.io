@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2016-12-22T15:00:26.832Z</updated>
+  <updated>2017-03-12T09:42:22.258Z</updated>
   <id>/</id>
   
   <author>
@@ -17,42 +17,55 @@
   
   <entry>
     <title>学会使用正则表达式</title>
-    <link href="/2016/12/18/regexp/"/>
-    <id>/2016/12/18/regexp/</id>
-    <published>2016-12-18T12:35:29.000Z</published>
-    <updated>2016-12-22T15:00:26.832Z</updated>
+    <link href="/2017/01/18/regexp/"/>
+    <id>/2017/01/18/regexp/</id>
+    <published>2017-01-18T12:35:29.000Z</published>
+    <updated>2017-03-12T09:42:22.258Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="正则表达式介绍"><a href="#正则表达式介绍" class="headerlink" title="正则表达式介绍"></a>正则表达式介绍</h1><p>  正则表达式主要可用来搜索文本，替换文本，提取子字符串等。本文总结一下正则表达式的基本写法。<br>正则表达式由普通字符和元字符组成，普通字符代表的是自己，元字符是一些预定义的特殊含义的字符。<br>画个图来表示一下看起来更直观,请指正。  </p>
-<p><img src="\assets\blogImg\zhengzeNT.png" alt=""><br><a id="more"></a><br>   一个正则表达式可能就是普通字符也可能就是元字符，还有就是普通字符和元字符的组合,这些式子代表着符合某一种模式的字符串。<br>普通字符大家都能理解，那理解正则表达式代表的字符串其实只要理解元字符的含义就行了。</p>
+    <content type="html"><![CDATA[<h1 id="正则表达式介绍"><a href="#正则表达式介绍" class="headerlink" title="正则表达式介绍"></a>正则表达式介绍</h1><p>  正则表达式具有很强大的字符串处理能力，平时处理文件时可以用来搜索文本，替换文本。在编程中也可使用正则表达式<br>处理字符串。<br>1.针对输入内容的格式验证：邮箱，电话，时间等具有一定模式的字符串。<br><img src="\assets\blogImg\regexp\useful.png" alt=""><br><a id="more"></a><br>2.字符串替换<br><img src="\assets\blogImg\regexp\exchange.png" alt=""></p>
+<p>3.动态生成页面内容<br>  使用replace方法，过滤输入数据，将符合某种模式的数据替换成指定的数据输出。</p>
+<p>  正则表达式由普通字符和元字符组成，普通字符代表的就是本身的含义，元字符是一些预定义的特殊含义的字符。<br>画个图来表示一下看起来更直观。  </p>
+<p><img src="\assets\blogImg\zhengzeNT.png" alt=""></p>
+<p>  一个正则表达式可能就是普通字符也可能就是元字符，还有就是普通字符和元字符的组合,这些式子代表着符合某一种模式的字符串。<br>  普通字符就是按照原意理解，那理解正则表达式代表的字符串就只要理解元字符的含义就行了。</p>
 <h1 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h1><pre><code>普通字符包括字母数字下划线
 </code></pre><p>   alert(“abc”.match(/a/));//a</p>
 <p>   alert(“my apple”.match(/apple/));//apple</p>
-<h1 id="集合-元字符"><a href="#集合-元字符" class="headerlink" title="集合:元字符[]"></a>集合:元字符[]</h1><p>   /[abc]/ ,匹配abc中的任意一个字符<br>   alert(“apple”.match(/[abc]/));//a<br>   alert(“bit”.match(/[abc]/));//b   </p>
-<p>   元字符^ ， 这个符合用在[]里面表示取反,用在外面则是表示界限<br>   /[^abc]/ ，匹配除abc中任意一个以外的一个字符<br>   alert(/[^abc]/.test(“a”));//false<br>   alert(/[^abc]/.test(“d”));//true</p>
-<p>   元字符- , 这个符号用在[]里面表示范围<br>   /[a-z]/ , 匹配小写的字母<br>   alert(/[a-z]/.test(“s”));//true</p>
-<p>   ^和-也可以组合使用<br>   /[^a-s1-6]/  ，匹配a-s,1-6以外的其他一个字符<br>   alert(/[^a-s1-6]/.test(“9”));//true<br>   alert(/[^a-s1-6]/.test(“5”));false</p>
-<h1 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h1><p>   +? ,匹配?前的子表达式出现0次或1次。例如,/xy?/将匹配”x”或”xy”<br>   +<em> ,匹配前面的子表达式任意次。例如，/zo</em>/能匹配“z”，也能匹配“zo”以及“zoo”<br>   ++ ,匹配前面的子表达式一次或多次(大于等于1次）。例如，“zo+”能匹配“zo”以及“zoo”，但不能匹配“z”。+等价于{1,}<br>   +{n} ,n是一个非负整数。匹配确定的n次。例如，“o{2}”不能匹配“Bob”中的“o”，但是能匹配“food”中的两个o<br>   +{n,} ,n是一个非负整数。至少匹配n次。例如，“o{2,}”不能匹配“Bob”中的“o”，但能匹配“foooood”中的所有o。“o{1,}”等价于“o+”。“o{0,}”则等价于“o*”<br>   +{n,m} ,m和n均为非负整数，其中n&lt;=m。最少匹配n次且最多匹配m次。例如，“o{1,3}”将匹配“fooooood”中的前三个o。“o{0,1}”等价于“o?”。请注意在逗号和两个数之间不能有空格</p>
-<p>但是需要注意的是<em>,+,{n,} 都是贪婪型元字符，它们在进行匹配时的行为模式是多多益善而不是适可而止的。<br>例: 文本内容：<br>    <b>AK</b> and <b>HI</b><br>    正则表达式<br>    /&lt;[Bb]&gt;.</em>&lt;\/[Bb]&gt;/<br>    alert(“<b>AK</b> and <b>HI</b>“.match(/&lt;[Bb]&gt;.<em>&lt;\/[Bb]&gt;/));<br>    结果:<b>AK</b> and <b>HI</b><br>   如果这里只想要标签内的内容而去掉and ， 就需要在</em>后面加?，使得这个*变成懒惰型</p>
-<p>   <img src="\assets\blogImg\tanlan.png" alt=""> </p>
-<p>#边界</p>
-<p>  ##单词边界<br>  单词边界主要用来判定一个单词的范围<br>  +/b 匹配一个单词边界，也就是指单词和空格间的位置（即正则表达式的“匹配”有两种概念，一种是匹配字符，一种是匹配位置，这里的\b就是匹配位置的）。例如，“er\b”可以匹配“never”中的“er”，但不能匹配“verb”中的“er”。<br>  +\B 匹配非单词边界。“er\B”能匹配“verb”中的“er”，但不能匹配“never”中的“er”。</p>
-<p>  ##字符串边界<br>  字符串边界则用来判定一个单词在整个文本中的位置<br>  +^ 匹配输入字符串的开始位置。<br>  +$ 匹配输入字符串的结束位置。<br>    alert(/^apple/.test(“my apple”));//false<br>    alert(/^apple/.test(“apple is good”));//true</p>
-<pre><code>alert(/apple$/.test(&quot;my apple&quot;));//true
-alert(/apple$/.test(&quot;apple is good&quot;));//false
-</code></pre><p>#子表达式<br>  子表达式就是正则表达式会把小括号内的内容作为一个整体，如(hit){2} 是指”hit”连续出现2次</p>
-<p>#回溯引用<br>   ()中的内容会被正则表达式中的匹配组捕获成为自表达式，在之后可通过”\编号”表示法进行引用<br>        //true<br>    (dog)被捕获成为自表达式，紧接着使用\1调用此表达式</p>
-<p>#非捕获性分组<br>   在()左括号后面紧跟?:即(?:)此时不会创建自表达式<br>    alert(/(?:dog)\1/.test(“dogdog”));//false<br>    alert(/(?:dog)\1/.test(“dog\1”));//true</p>
-<p>#前瞻后瞻<br>  前瞻指定了一个必须匹配，但不在结果中返回的模式。向前查找实际上就是一个子表达式，从语法上看，一个向前查找模式其实就是一个以?=开头的子表达式，需要匹配的文本跟在=后面。<br>  例：文本<br>    <a href="http://www.forta.com/" target="_blank" rel="external">http://www.forta.com/</a><br>    <a href="https://mail.forta.com/" target="_blank" rel="external">https://mail.forta.com/</a><br>    ftp://ftp.forta.com/<br>  正则表达式<br>    /.+(?=:)/<br>   结果将匹配http   https   ftp，即”:”前的内容</p>
-<p>   <img src="\assets\blogImg\lkdy.png" alt=""></p>
-<p>##<a href="http://c.biancheng.net/cpp/html/1427.html" target="_blank" rel="external">更多的元字符</a></p>
-<p>##<a href="http://www.jianshu.com/p/27c8b26faa9b" target="_blank" rel="external">简单易懂的正则表达式文章1</a></p>
-<p>##<a href="http://www.cnblogs.com/rubylouvre/archive/2010/03/09/1681222.html#top" target="_blank" rel="external">简单易懂的正则表达式文章2</a></p>
-]]></content>
+<h1 id="基本字符"><a href="#基本字符" class="headerlink" title="基本字符"></a>基本字符</h1><h2 id="字符"><a href="#字符" class="headerlink" title="[] 字符"></a>[] 字符</h2><pre><code>[]定义了一个字符集合 
+</code></pre><p>  <img src="\assets\blogImg\regexp\base1.png" alt=""> </p>
+<h2 id="字符-1"><a href="#字符-1" class="headerlink" title="- 字符"></a>- 字符</h2><pre><code>这个符号用在[]里面表示范围,定义了一个区间
+</code></pre><p>  <img src="\assets\blogImg\regexp\base2.png" alt=""> </p>
+<h2 id="字符-2"><a href="#字符-2" class="headerlink" title=". 字符"></a>. 字符</h2><pre><code>.匹配除了回车加换行外的任一字符
+</code></pre><p>  <img src="\assets\blogImg\regexp\base3.png" alt=""> </p>
+<h2 id="字符-3"><a href="#字符-3" class="headerlink" title="\ 字符"></a>\ 字符</h2><pre><code>\ 转义符号，将特殊字符转换为普通字符
+</code></pre><p>  <img src="\assets\blogImg\regexp\base4.png" alt=""></p>
+<h2 id="字符-4"><a href="#字符-4" class="headerlink" title="^ 字符"></a>^ 字符</h2><pre><code>这个符合用在[]里面表示取反,用在外面则是表示界限
+</code></pre><p>  <img src="\assets\blogImg\regexp\base5.png" alt=""></p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>  <img src="\assets\blogImg\regexp\base6.png" alt=""></p>
+<h1 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h1><h2 id=""><a href="#" class="headerlink" title="+"></a>+</h2><pre><code>+ 字符匹配前一个字符或子表达式的一次或多次
+</code></pre><p>  <img src="\assets\blogImg\regexp\quanti1.png" alt=""></p>
+<h2 id="-1"><a href="#-1" class="headerlink" title="?"></a>?</h2><pre><code>？匹配前一个字符的0次或一次重复
+</code></pre><p>  <img src="\assets\blogImg\regexp\quanti2.png" alt=""></p>
+<h2 id="其它-1"><a href="#其它-1" class="headerlink" title="其它"></a>其它</h2><p>  <img src="\assets\blogImg\regexp\quanti3.png" alt=""></p>
+<h1 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h1><h2 id="字符串边界"><a href="#字符串边界" class="headerlink" title="字符串边界"></a>字符串边界</h2><pre><code>^匹配字符串的开头,以...开头的字符串
+</code></pre><p>  <img src="\assets\blogImg\regexp\boundary.png" alt=""></p>
+<h2 id="字母边界"><a href="#字母边界" class="headerlink" title="字母边界"></a>字母边界</h2><pre><code>\b匹配单词的边界，可以不成对出现
+</code></pre><p>  <img src="\assets\blogImg\regexp\boundary2.png" alt=""></p>
+<h2 id="其它-2"><a href="#其它-2" class="headerlink" title="其它"></a>其它</h2><p>  <img src="\assets\blogImg\regexp\boundary3.png" alt=""></p>
+<h1 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h1><h2 id="捕获性分组"><a href="#捕获性分组" class="headerlink" title="() 捕获性分组"></a>() 捕获性分组</h2><pre><code>()定义一个子表达式，代表一个整体。
+</code></pre><p>  <img src="\assets\blogImg\regexp\sub.png" alt="">          </p>
+<h2 id="非捕获性分组"><a href="#非捕获性分组" class="headerlink" title="(?:) 非捕获性分组"></a>(?:) 非捕获性分组</h2><pre><code>在()左括号后面紧跟?:即(?:)此时不会创建自表达式
+</code></pre><p>  <img src="\assets\blogImg\regexp\sub2.png" alt="">    </p>
+<h1 id="回溯引用"><a href="#回溯引用" class="headerlink" title="回溯引用"></a>回溯引用</h1><h2 id="对分组的内容在后面可以再次调用"><a href="#对分组的内容在后面可以再次调用" class="headerlink" title="对分组的内容在后面可以再次调用"></a>对分组的内容在后面可以再次调用</h2><pre><code>子表达式的内容可以使用\+序数调用，序数就是定义的顺序
+</code></pre><p>  <img src="\assets\blogImg\regexp\recall.png" alt="">          </p>
+<h1 id="前后查找"><a href="#前后查找" class="headerlink" title="前后查找"></a>前后查找</h1><h2 id="向前查找"><a href="#向前查找" class="headerlink" title="?=向前查找"></a>?=向前查找</h2><pre><code>?= 匹配下一个字符前的内容
+javascript只支持向前查找，java则前后查找都支持 
+</code></pre><p>  <img src="\assets\blogImg\regexp\lookback.png" alt="">    </p>
+<h2 id="其它-3"><a href="#其它-3" class="headerlink" title="其它"></a>其它</h2><p>  <img src="\assets\blogImg\lkdy.png" alt=""></p>
+<h2 id="更多的元字符"><a href="#更多的元字符" class="headerlink" title="更多的元字符"></a><a href="http://c.biancheng.net/cpp/html/1427.html" target="_blank" rel="external">更多的元字符</a></h2><h2 id="简单易懂的正则表达式文章1"><a href="#简单易懂的正则表达式文章1" class="headerlink" title="简单易懂的正则表达式文章1"></a><a href="http://www.jianshu.com/p/27c8b26faa9b" target="_blank" rel="external">简单易懂的正则表达式文章1</a></h2><h2 id="简单易懂的正则表达式文章2"><a href="#简单易懂的正则表达式文章2" class="headerlink" title="简单易懂的正则表达式文章2"></a><a href="http://www.cnblogs.com/rubylouvre/archive/2010/03/09/1681222.html#top" target="_blank" rel="external">简单易懂的正则表达式文章2</a></h2>]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;正则表达式介绍&quot;&gt;&lt;a href=&quot;#正则表达式介绍&quot; class=&quot;headerlink&quot; title=&quot;正则表达式介绍&quot;&gt;&lt;/a&gt;正则表达式介绍&lt;/h1&gt;&lt;p&gt;  正则表达式主要可用来搜索文本，替换文本，提取子字符串等。本文总结一下正则表达式的基本写法。&lt;br&gt;正则表达式由普通字符和元字符组成，普通字符代表的是自己，元字符是一些预定义的特殊含义的字符。&lt;br&gt;画个图来表示一下看起来更直观,请指正。  &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;\assets\blogImg\zhengzeNT.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+      &lt;h1 id=&quot;正则表达式介绍&quot;&gt;&lt;a href=&quot;#正则表达式介绍&quot; class=&quot;headerlink&quot; title=&quot;正则表达式介绍&quot;&gt;&lt;/a&gt;正则表达式介绍&lt;/h1&gt;&lt;p&gt;  正则表达式具有很强大的字符串处理能力，平时处理文件时可以用来搜索文本，替换文本。在编程中也可使用正则表达式&lt;br&gt;处理字符串。&lt;br&gt;1.针对输入内容的格式验证：邮箱，电话，时间等具有一定模式的字符串。&lt;br&gt;&lt;img src=&quot;\assets\blogImg\regexp\useful.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -63,10 +76,10 @@ alert(/apple$/.test(&quot;apple is good&quot;));//false
   
   <entry>
     <title>git命令整理(一)</title>
-    <link href="/2016/12/12/git1/"/>
-    <id>/2016/12/12/git1/</id>
-    <published>2016-12-12T15:45:11.000Z</published>
-    <updated>2016-12-14T16:12:10.803Z</updated>
+    <link href="/2017/01/03/git1/"/>
+    <id>/2017/01/03/git1/</id>
+    <published>2017-01-03T15:45:11.000Z</published>
+    <updated>2017-03-12T09:54:04.759Z</updated>
     
     <content type="html"><![CDATA[<p>git是一个分布式的版本控制系统，其工作流程可用下图表示<br><img src="\assets\blogImg\git.png" alt=""><br><a id="more"></a><br><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">图片来源</a></p>
 <p>名称解释</p>
@@ -343,17 +356,18 @@ $ git archive
   
   <entry>
     <title>开篇</title>
-    <link href="/2016/12/11/first/"/>
-    <id>/2016/12/11/first/</id>
-    <published>2016-12-11T03:31:03.000Z</published>
-    <updated>2016-12-12T08:17:32.940Z</updated>
+    <link href="/2016/12/20/first/"/>
+    <id>/2016/12/20/first/</id>
+    <published>2016-12-20T03:31:03.000Z</published>
+    <updated>2017-03-12T09:53:25.188Z</updated>
     
-    <content type="html"><![CDATA[<p> 作为一个程序员，在学习和工作中经常要接触各种各样的技术，接触的多了容易“健忘”，学了新的用着用着就忘了老的。就像小时候课本里的那只猴子，摘了桃子扔玉米，摘了西瓜扔桃子。估计脑子里的记忆也分类保存了。新记忆一来先清洗一遍往硬盘一丢，用的多的就把它拉到缓存区，用的少的慢慢的数据就丢失了。<br>所以搞了个博客，把这一路上遇到的技术要点记录下来，时不时的还可以回顾一下。内容都是自己以前学过用过的，还可以达到温故而知新的效果，毕竟此一时彼一时，理解能力见闻都不一样了。</p>
+    <content type="html"><![CDATA[<p> 作为一个程序员，在学习和工作中经常要学习和使用各种各样的新技术，适当的记录和总结有助于学的更好也方便以后回顾。不要像小时候课本里的那只猴子，摘了桃子扔玉米，摘了西瓜扔桃子。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt; 作为一个程序员，在学习和工作中经常要接触各种各样的技术，接触的多了容易“健忘”，学了新的用着用着就忘了老的。就像小时候课本里的那只猴子，摘了桃子扔玉米，摘了西瓜扔桃子。估计脑子里的记忆也分类保存了。新记忆一来先清洗一遍往硬盘一丢，用的多的就把它拉到缓存区，用的少的慢慢的数
+      &lt;p&gt; 作为一个程序员，在学习和工作中经常要学习和使用各种各样的新技术，适当的记录和总结有助于学的更好也方便以后回顾。不要像小时候课本里的那只猴子，摘了桃子扔玉米，摘了西瓜扔桃子。&lt;/p&gt;
+
     
     </summary>
     
