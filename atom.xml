@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2017-03-12T09:42:22.258Z</updated>
+  <updated>2017-03-12T09:48:59.986Z</updated>
   <id>/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="/2017/01/18/regexp/"/>
     <id>/2017/01/18/regexp/</id>
     <published>2017-01-18T12:35:29.000Z</published>
-    <updated>2017-03-12T09:42:22.258Z</updated>
+    <updated>2017-03-12T09:48:59.986Z</updated>
     
     <content type="html"><![CDATA[<h1 id="正则表达式介绍"><a href="#正则表达式介绍" class="headerlink" title="正则表达式介绍"></a>正则表达式介绍</h1><p>  正则表达式具有很强大的字符串处理能力，平时处理文件时可以用来搜索文本，替换文本。在编程中也可使用正则表达式<br>处理字符串。<br>1.针对输入内容的格式验证：邮箱，电话，时间等具有一定模式的字符串。<br><img src="\assets\blogImg\regexp\useful.png" alt=""><br><a id="more"></a><br>2.字符串替换<br><img src="\assets\blogImg\regexp\exchange.png" alt=""></p>
 <p>3.动态生成页面内容<br>  使用replace方法，过滤输入数据，将符合某种模式的数据替换成指定的数据输出。</p>
